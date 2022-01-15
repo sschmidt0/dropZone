@@ -1,39 +1,5 @@
 .App {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   width: 100vw;
   min-width: 300px;
-  height: 100vh;
-  padding: 40px;
-  color: #fff;
-  background-color: #130F26;
-  box-sizing: border-box;
-
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-
-  .left-part {
-    width: 100%;
-
-    @media screen and (min-width: 768px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-  }
-
-  .right-part {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    @media screen and (min-width: 768px) {
-      height: 100%;
-      width: 600px;
-    }
-  }
+  min-height: 100vh;
 }

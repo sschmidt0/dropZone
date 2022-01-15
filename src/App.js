@@ -1,21 +1,19 @@
 import './styles/App.scss';
-import { Uploadfield } from './components/UploadField';
-import { LoginBox } from './components/LoginBox';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RegisterLoginPage } from './pages/RegisterLoginPage';
+import { DropZonePage } from './pages/DropZonePage';
 
 export const App = () => {
-  const handleClick = () => {
-    console.log('clicked');
-  };
 
   return (
     <div className="App">
-      <div className="left-part">
-        <Uploadfield />
-        <button onClick={ handleClick }>Subir archivos</button>
-      </div>
-      <div className="right-part">
-        <LoginBox />
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<RegisterLoginPage />} />
+          <Route path="/iniciar" element={<RegisterLoginPage />} />
+          <Route path="/dropzone" element={<DropZonePage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

@@ -5,15 +5,12 @@ export const BorderDiv = styled.div`
   justify-content: center;
   align-items: center;
   height: 400px;
-  margin-bottom: 30px;
-  padding: 20px;
-  background: #6AB972;
-  filter: blur(70px);
-  transform: matrix(1, 0, 0, -1, 0, 0);
+  margin-bottom: 60px;
+  box-shadow: 1px 1px 50px #6AB972;
   box-sizing: border-box;
 
   @media screen and (min-width: 768px) {
-    height: 600px;
+    height: 560px;
     margin-bottom: 0;
   }
 `;
@@ -32,6 +29,7 @@ export const StyledField = styled.div`
   p {
     font-size: 17px;
     text-transform: uppercase;
+    z-index: 1;
 
     @media screen and (min-width: 768px) {
       font-size: 40px;

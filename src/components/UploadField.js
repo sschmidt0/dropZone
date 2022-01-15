@@ -16,25 +16,36 @@ import Nkube from '../img/Nkube.svg';
 
 export const Uploadfield = () => {
   const [document, setDocument] = useState('');
+  const [docPath, setDocPath] = useState('');
   const [isError, setIsError] = useState(false);
 
+  console.log('document', document);
+
   const onDrop = useCallback(acceptedFiles => {
-    console.log(acceptedFiles);
-    setDocument(acceptedFiles[0].path);
+    setDocPath(acceptedFiles[0].path);
+
+    const reader = new FileReader();
+    reader.onabort = () => setIsError(true);
+    reader.onerror = () => setIsError(true);
+    reader.onload = () => {
+      setIsError(false);
+      reader.readAsDataURL(reader.result);
+      setDocument(reader.result);
+    }
   }, []);
 
-  const { getRootProps, getInputProps, isDragAccept } = useDropzone({onDrop});
+  const { getRootProps, getInputProps } = useDropzone({onDrop});
 
   return (
     <BorderDiv>
       <StyledField {...getRootProps()}>
         <input {...getInputProps()} />
-        {
-          isDragAccept ?
-            <p>{`Tu archivo ${document} se ha subido correctamente`}</p> :
-            <p>arrastra tus archivos aquí</p>
-        }
+        {/* Text or error message within input box */}
+        { docPath !== '' && <p>{`Tu archivo ${docPath} se ha subido correctamente`}</p> }
+        { docPath === '' && <p>arrastra tus archivos aquí</p> }
         { isError && <ErrorMessage setIsError={ setIsError } /> }
+
+        {/* Tech symbols within input box */}
         <img src={ Vue } alt="Vue symbol" className="vue" />
         <img src={ Git } alt="Git symbol" className="git" />
         <img src={ Sass } alt="Sass symbol" className="sass" />

@@ -17,4 +17,8 @@ export const StyledButton = styled.button`
     top: 5px;
     left: 15px;
   }
+
+  span {
+    margin-left: 20px;
+  }
 `;

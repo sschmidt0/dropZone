@@ -1,3 +1,5 @@
+@import 'Variables.scss';
+
 button {
   display: flex;
   flex-direction: row;
@@ -7,9 +9,9 @@ button {
   padding: 20px;
   font-size: 20px;
   font-weight: bold;
-  color: #fff;
-  background: #569B51;
-  border: #569B51;
+  color: $text-color;
+  background: $button-color;
+  border: $button-color;
   border-radius: 5px;
   cursor: pointer;
 }

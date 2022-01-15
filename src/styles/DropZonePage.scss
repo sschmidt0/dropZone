@@ -1,0 +1,42 @@
+@import 'Variables.scss';
+
+.DropZonePage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100vw;
+  min-width: 300px;
+  padding: 40px;
+  color: $text-color;
+  background-color: $background-color;
+  box-sizing: border-box;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 70px;
+    height: 100vh;
+  }
+
+  .left-part {
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .right-part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      height: 100%;
+      width: 700px;
+    }
+  }
+}
