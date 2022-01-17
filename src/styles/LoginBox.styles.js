@@ -27,6 +27,10 @@ export const StyledBox = styled.div`
     }
   }
 
+  span {
+    color: #130F26;
+  }
+
   .login-button {
     position: relative;
     width: 100%;
