@@ -7,7 +7,7 @@ export const UserProvider = (props) => {
   const [userAccessToken, setUserAccessToken] = useState('');
 
   return (
-    <UserContext.Provider value={[isUserLoggedIn, setIsUserLoggedIn, userAccessToken, setUserAccessToken]}>
+    <UserContext.Provider value={{isUserLoggedIn, setIsUserLoggedIn, userAccessToken, setUserAccessToken}}>
       { props.children }
     </UserContext.Provider>
   )

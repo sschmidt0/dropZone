@@ -6,8 +6,9 @@ import '../styles/RegisterLoginPage.scss';
 import { validateInput } from '../assets/validateInput';
 
 export const RegisterLoginPage = () => {
-  const [isUserLoggedIn, setIsUserLoggedIn] = useContext(UserContext);
-  const [userAccessToken, setUserAccessToken] = useContext(UserContext);
+  const { isUserLoggedIn } = useContext(UserContext);
+  const { setIsUserLoggedIn } = useContext(UserContext);
+  const { setUserAccessToken } = useContext(UserContext);
   const location = useLocation();
   const navigate = useNavigate();
   const [userName, setUserName] = useState('');
@@ -19,14 +20,8 @@ export const RegisterLoginPage = () => {
   const linkText = location.pathname === '/iniciar' ? 'Regístrate' : 'Inicia la sesión';
 
   const handleLogin = (res) => {
-    console.log('userAccessToken before', userAccessToken);
-    console.log('typeof accessToken', typeof userAccessToken);
-    console.log('resp accessToken: ', res.accessToken);
-    console.log('typeof res.accessToken', typeof res.accessToken);
     console.log('Login sucessful', res.profileObj);
-    // setUserAccessToken(res.accessToken);
-    setUserAccessToken('hola');
-    console.log('userAccessToken afterwards: ', userAccessToken);
+    setUserAccessToken(res.accessToken);
     setIsUserLoggedIn(true);
     location.pathname === 'iniciar' ? navigate('/../dropzone') : navigate('/dropzone');
   };

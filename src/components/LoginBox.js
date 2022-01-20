@@ -8,7 +8,8 @@ import { StyledBox } from '../styles/LoginBox.styles';
 export const LoginBox = () => {
   const navigate = useNavigate();
   const [showLoginButton, setShowLoginButton] = useState(false);
-  const [isUserLoggedIn, setIsUserLoggedIn] = useContext(UserContext);
+  const { isUserLoggedIn } = useContext(UserContext);
+  const { setIsUserLoggedIn } = useContext(UserContext);
 
   // const handleClick = () => {
   //   console.log('logged in');

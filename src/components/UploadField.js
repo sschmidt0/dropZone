@@ -14,15 +14,15 @@ import CSS from '../img/CSS.svg';
 import TF from '../img/TF.svg';
 import Nkube from '../img/Nkube.svg';
 
-export const Uploadfield = () => {
-  const [document, setDocument] = useState('');
-  const [docPath, setDocPath] = useState('');
+export const Uploadfield = ({ document, setDocument }) => {
   const [isError, setIsError] = useState(false);
 
-  console.log('document', document);
-
   const onDrop = useCallback(acceptedFiles => {
-    setDocPath(acceptedFiles[0].path);
+    setDocument({
+      docName: acceptedFiles[0].name,
+      docPath: acceptedFiles[0].path,
+      docType: acceptedFiles[0].type
+    });
 
     const reader = new FileReader();
     reader.onabort = () => setIsError(true);
@@ -30,8 +30,10 @@ export const Uploadfield = () => {
     reader.onload = () => {
       setIsError(false);
       reader.readAsDataURL(reader.result);
-      setDocument(reader.result);
+      console.log('reader.result', reader.result);
+      // setDocument(reader.result);
     }
+    //eslint-disable-next-line
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({onDrop});
@@ -41,8 +43,8 @@ export const Uploadfield = () => {
       <StyledField {...getRootProps()}>
         <input {...getInputProps()} />
         {/* Text or error message within input box */}
-        { docPath !== '' && <p>{`Tu archivo ${docPath} se ha subido correctamente`}</p> }
-        { docPath === '' && <p>arrastra tus archivos aquí</p> }
+        { document.docName !== '' && <p>{`Tu archivo ${document.docName} se ha subido correctamente`}</p> }
+        { document.docName === '' && <p>arrastra tus archivos aquí</p> }
         { isError && <ErrorMessage setIsError={ setIsError } /> }
 
         {/* Tech symbols within input box */}
